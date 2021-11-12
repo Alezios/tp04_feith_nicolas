@@ -5,20 +5,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {RecapFormComponent} from "../recap-form/recap-form.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-export interface RecapData {
-    firstName: string,
-    lastName: string,
-    address: string,
-    city: string,
-    cp: string,
-    country: string,
-    prefix: string,
-    telephone: string,
-    email: string,
-    gender: string,
-    username: string,
-}
-
 @Component({
     selector: 'app-form-group-registration',
     templateUrl: './form-group-registration.component.html',

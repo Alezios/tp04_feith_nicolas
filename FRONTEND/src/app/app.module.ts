@@ -20,8 +20,22 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatListModule} from "@angular/material/list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {HttpClientModule} from "@angular/common/http";
-import { CatalogueComponent } from './catalogue/catalogue.component';
-import {FilterPipe} from "./filter-pipe";
+import { NgxsModule } from '@ngxs/store';
+import { ProductState } from './productState';
+import { NavigationComponent } from './navigation/navigation.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+    {
+      path: 'products',
+      loadChildren: () =>
+        import('./products/products.module').then((m) => m.ProductsModule),
+    },
+    {
+      path: 'signup',
+      component: FormGroupRegistrationComponent
+    },
+  ];
 
 @NgModule({
     declarations: [
@@ -31,8 +45,7 @@ import {FilterPipe} from "./filter-pipe";
         FormGroupRegistrationComponent,
         RecapFormComponent,
         PhonePipe,
-        CatalogueComponent,
-        FilterPipe
+        NavigationComponent
     ],
     imports: [
         BrowserModule,
@@ -49,12 +62,15 @@ import {FilterPipe} from "./filter-pipe";
         MatIconModule,
         MatListModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        NgxsModule.forRoot([ProductState]),
+        RouterModule.forRoot(routes)
     ],
     providers: [
         {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
     ],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

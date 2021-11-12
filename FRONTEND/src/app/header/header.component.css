@@ -1,6 +1,5 @@
-mat-nav-list {
-    display: flex;
-    flex-direction: row;
-    border: 20px black;
-    padding: 0.5em;
+h1 {
+    text-align: center;
+    color: white;
+    background-color: darkslategray;
 }
